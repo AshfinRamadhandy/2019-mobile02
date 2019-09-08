@@ -3,6 +3,7 @@ package id.ac.polinema.androidlifecycle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -11,6 +12,8 @@ public class MainActivity extends AppCompatActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		nameInput = findViewById(R.id.input_name);
+		outputText = findViewById(R.id.text_output);
 	}
 
 	// TODO: tambahkan callback onStart() di sini
@@ -51,5 +54,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onDestroy(){
 	    super.onDestroy();
 	    Toast.makeText(this, "App on Destroy",Toast.LENGTH_SHORT).show();
+    }
+
+    public void handleSubmit(View view) {
+        String name = nameInput.getText().toString();
+        outputText.setText("Hello " + name);
     }
 }
